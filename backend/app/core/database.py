@@ -1,20 +1,35 @@
 from typing import AsyncGenerator
+from urllib.parse import urlparse, urlencode, parse_qs, urlunparse
 
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
 
 from app.core.config import settings
 
+# --- URL normalisation ---
 db_url = settings.DATABASE_URL
+
+# Swap dialect for asyncpg
 if db_url.startswith("postgresql://"):
     db_url = db_url.replace("postgresql://", "postgresql+asyncpg://", 1)
+elif db_url.startswith("postgres://"):
+    db_url = db_url.replace("postgres://", "postgresql+asyncpg://", 1)
 
+# Strip query params asyncpg doesn't accept
+parsed = urlparse(db_url)
+params = parse_qs(parsed.query)
+params.pop("sslmode", None)
+params.pop("channel_binding", None)
+clean_url = urlunparse(parsed._replace(query=urlencode(params, doseq=True)))
+
+# --- Engine ---
 engine = create_async_engine(
-    db_url,
+    clean_url,
     echo=False,
     pool_pre_ping=True,
     pool_size=10,
     max_overflow=20,
+    connect_args={"ssl": True},  # Required for Neon
 )
 
 AsyncSessionLocal = async_sessionmaker(
