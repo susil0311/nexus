@@ -1,0 +1,81 @@
+DAILY PROGRESS REPORT
+=====================
+Project: Kaziranga Pipeline Extension (KPE-2024)
+Date: 05 September 2026
+Reported By: Site Engineer R. Borah
+Discipline: Piping & Civil
+
+─────────────────────────────────────────────────────
+CIVIL WORKS
+─────────────────────────────────────────────────────
+
+1. Excavation for pipeline trench — Section CH 0+000 to CH 0+450:
+   Activity completed today at 1430 hrs. Total excavated length: 450 meters.
+   Supervisor: Mahanta. No safety incidents.
+
+2. PCC bed preparation for anchor block AB-07:
+   Work started this morning at 0800 hrs. As of end of shift, approximately
+   60% complete. Expected finish: 06 Sep 2026.
+   Supervisor: D. Kalita.
+
+3. Backfilling of trench Section CH 0+000 to CH 0+200:
+   Started on 03 Sep, completed today. 200 meters backfilled and compacted.
+   Compaction test results pending from lab.
+
+─────────────────────────────────────────────────────
+PIPING WORKS
+─────────────────────────────────────────────────────
+
+4. Pipe stringing — 12-inch NB CS, Section B area:
+   60 lengths (18-meter each) strung and aligned. Started: 03 Sep 2026.
+   Completed today: 05 Sep 2026.
+
+5. Welding of field joints — 12-inch CS pipe, CH 0+000 to CH 0+300:
+   Joint welding commenced 04 Sep. Today completed 18 joints out of 25 planned
+   for this section. Progress: 72%. Supervisor: Rajesh Kumar (AWS CWI).
+   Remaining 7 joints expected to be completed by 07 Sep 2026.
+
+6. Radiographic testing of completed welds — CH 0+000 to CH 0+200:
+   RT carried out by M/s Zetec NDT. 12 joints tested, 11 passed, 1 repair weld
+   identified at joint no. J-18. Repair welding started, RT to repeat tomorrow.
+   Started: 05 Sep 2026.
+
+7. Spool erection at pump station inlet header — Spool No. PS-IN-003:
+   Spool lifted and positioned using mobile crane 50T. Fit-up completed.
+   Welding to commence 06 Sep 2026. Current status: fit-up done, 40% progress.
+   Location: Pump Station Building, North Side.
+
+─────────────────────────────────────────────────────
+MANPOWER DEPLOYED TODAY
+─────────────────────────────────────────────────────
+Welders (AWS): 6 | Helpers: 14 | Crane Operator: 1
+Civil Mason: 4 | Supervisors: 3 | Safety Officer: 1
+
+─────────────────────────────────────────────────────
+EQUIPMENT ON SITE
+─────────────────────────────────────────────────────
+Excavator (CAT 320): 2 | Mobile Crane 50T: 1
+Welding Machine: 6 | Plate Compactor: 2
+
+─────────────────────────────────────────────────────
+WEATHER
+─────────────────────────────────────────────────────
+Partly cloudy, light showers at 1100-1200 hrs. No work stoppage.
+
+─────────────────────────────────────────────────────
+ISSUES / DEVIATIONS
+─────────────────────────────────────────────────────
+- Material shortage: 6-inch valve flanges not received. Awaiting delivery from
+  Duliajan store. Expected 08 Sep 2026. No impact on critical path currently.
+- Repair weld on joint J-18 noted above. Under monitoring.
+
+─────────────────────────────────────────────────────
+PLANNED FOR TOMORROW (06 Sep 2026)
+─────────────────────────────────────────────────────
+- Complete PCC bed for anchor block AB-07
+- Complete remaining 7 weld joints (CH 0+200 to CH 0+300)
+- Repeat RT on joint J-18
+- Start spool welding at PS-IN-003
+- Start electrical cable pulling, MCC-01 to Field Junction Box FJB-03
+
+Signature: R. Borah (Site Engineer)

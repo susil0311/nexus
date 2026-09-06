@@ -1,0 +1,57 @@
+# NEXUS PM — .gitignore
+
+# ─── Environment ──────────────────────────────────────────────────────────────
+.env
+.env.local
+.env.production
+
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# ─── Node / Next.js ──────────────────────────────────────────────────────────
+node_modules/
+.next/
+out/
+.turbo/
+*.tsbuildinfo
+
+# ─── AI / Data ───────────────────────────────────────────────────────────────
+chroma_data/
+*.pkl
+*.model
+ai-service/models/*.pkl
+
+# ─── Docker ───────────────────────────────────────────────────────────────────
+# (keep docker-compose.yml but ignore override)
+docker-compose.override.yml
+
+# ─── IDE ──────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ─── Uploads / Storage ────────────────────────────────────────────────────────
+backend/uploads/
+minio_data/
+postgres_data/
+
+# ─── Misc ─────────────────────────────────────────────────────────────────────
+*.tmp
+*.bak

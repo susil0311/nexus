@@ -1,0 +1,126 @@
+{
+  "project": "Kaziranga Pipeline Extension",
+  "project_code": "KPE-2024",
+  "activities": [
+    {
+      "activity_id": "CIV-EXC-001",
+      "name": "Excavation for pipeline trench Section A",
+      "discipline": "civil",
+      "baseline_start": "2026-08-20",
+      "baseline_finish": "2026-09-05",
+      "planned_duration": 12,
+      "unit": "m",
+      "planned_quantity": 450,
+      "level": 5,
+      "float_days": 0
+    },
+    {
+      "activity_id": "CIV-PCC-007",
+      "name": "PCC bed preparation for anchor block AB-07",
+      "discipline": "civil",
+      "baseline_start": "2026-09-04",
+      "baseline_finish": "2026-09-06",
+      "planned_duration": 2,
+      "unit": "nos",
+      "planned_quantity": 1,
+      "level": 5,
+      "float_days": 2
+    },
+    {
+      "activity_id": "CIV-BCK-001",
+      "name": "Backfilling and compaction trench Section A",
+      "discipline": "civil",
+      "baseline_start": "2026-09-03",
+      "baseline_finish": "2026-09-07",
+      "planned_duration": 4,
+      "unit": "m",
+      "planned_quantity": 450,
+      "level": 5,
+      "float_days": 1
+    },
+    {
+      "activity_id": "PIP-STR-002",
+      "name": "Pipe stringing 12-inch CS Section B",
+      "discipline": "piping",
+      "baseline_start": "2026-09-01",
+      "baseline_finish": "2026-09-05",
+      "planned_duration": 4,
+      "unit": "nos",
+      "planned_quantity": 60,
+      "level": 5,
+      "float_days": 0
+    },
+    {
+      "activity_id": "PIP-WLD-003",
+      "name": "Field joint welding 12-inch CS CH 0+000 to 0+300",
+      "discipline": "piping",
+      "baseline_start": "2026-09-04",
+      "baseline_finish": "2026-09-08",
+      "planned_duration": 4,
+      "unit": "joints",
+      "planned_quantity": 25,
+      "level": 5,
+      "float_days": 0
+    },
+    {
+      "activity_id": "PIP-NDT-003",
+      "name": "Radiographic testing of weld joints CH 0+000 to 0+200",
+      "discipline": "piping",
+      "baseline_start": "2026-09-05",
+      "baseline_finish": "2026-09-06",
+      "planned_duration": 1,
+      "unit": "joints",
+      "planned_quantity": 12,
+      "level": 5,
+      "float_days": 1
+    },
+    {
+      "activity_id": "PIP-SPL-003",
+      "name": "Erect spool PS-IN-003 at pump station inlet header",
+      "discipline": "piping",
+      "baseline_start": "2026-09-05",
+      "baseline_finish": "2026-09-07",
+      "planned_duration": 2,
+      "unit": "nos",
+      "planned_quantity": 1,
+      "level": 5,
+      "float_days": 3
+    },
+    {
+      "activity_id": "ELEC-CAB-003",
+      "name": "Power cable laying MCC-01 to FJB-03",
+      "discipline": "electrical",
+      "baseline_start": "2026-09-06",
+      "baseline_finish": "2026-09-10",
+      "planned_duration": 4,
+      "unit": "m",
+      "planned_quantity": 250,
+      "level": 5,
+      "float_days": 2
+    },
+    {
+      "activity_id": "INST-LOP-001",
+      "name": "Instrument loop testing for pressure transmitters PT-101 to PT-108",
+      "discipline": "instrumentation",
+      "baseline_start": "2026-09-15",
+      "baseline_finish": "2026-09-18",
+      "planned_duration": 3,
+      "unit": "loops",
+      "planned_quantity": 8,
+      "level": 5,
+      "float_days": 4
+    },
+    {
+      "activity_id": "CIV-GRT-002",
+      "name": "Grouting of pump foundation PF-A3",
+      "discipline": "civil",
+      "baseline_start": "2026-08-25",
+      "baseline_finish": "2026-08-27",
+      "planned_duration": 2,
+      "unit": "m3",
+      "planned_quantity": 3.5,
+      "level": 5,
+      "float_days": 0
+    }
+  ]
+}

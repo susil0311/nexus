@@ -1,0 +1,59 @@
+{
+  "oil_gas_activity_terms": {
+    "piping": {
+      "erection": ["erected", "lifted", "positioned", "installed", "set", "placed", "rigged"],
+      "welding": ["welded", "joint welding", "butt weld", "fillet weld", "field joint", "weld completed"],
+      "testing": ["NDT", "RT", "radiographic", "UT", "ultrasonic", "hydro test", "pressure test", "leak test"],
+      "fit_up": ["fit-up", "fit up", "alignment", "aligned", "gap check"],
+      "stringing": ["strung", "stringing", "laid out", "pipe stringing", "line up"],
+      "spool": ["spool", "prefab spool", "fabricated spool", "shop spool"],
+      "activities": {
+        "pipe_laying": ["pipe laying", "pipe laid", "line laying", "mainline laying", "pipeline laying"],
+        "weld_joint": ["weld joint", "field joint", "joint welding", "butt joint", "girth weld"],
+        "hydro_test": ["hydro test", "hydrotest", "pressure test", "hydraulic test"],
+        "coating": ["FBE coating", "wrap coating", "anti-corrosion coating", "holiday test"],
+        "radiography": ["RT", "radiography", "X-ray", "radiographic testing", "film"]
+      }
+    },
+    "civil": {
+      "excavation": ["excavated", "digging", "cut", "dug", "earth cutting", "trench excavation", "trenching"],
+      "backfilling": ["backfill", "backfilled", "filling", "compaction", "compacted", "bedding"],
+      "concrete": ["PCC", "RCC", "concreting", "concrete poured", "casting", "grouting", "grout"],
+      "foundation": ["foundation", "footing", "pile cap", "raft", "pad foundation", "anchor block"],
+      "formwork": ["shuttering", "formwork", "centering", "form removal", "deshuttering"],
+      "activities": {
+        "excavation": ["excavation for", "trench excavation", "pit excavation", "bulk excavation"],
+        "foundation": ["foundation work", "footing", "pile work", "pile driving"],
+        "grouting": ["grouting of", "pump grouting", "equipment grouting", "non-shrink grout"],
+        "concreting": ["concrete work", "RCC work", "PCC work", "casting of"]
+      }
+    },
+    "electrical": {
+      "cable": ["cable pulled", "cable laying", "cable laid", "cable installation", "cabling"],
+      "panel": ["panel installation", "MCC installed", "switchgear", "DB installation", "panel erected"],
+      "earthing": ["earthing", "grounding", "earth strip", "earth pit"],
+      "testing": ["loop testing", "megger test", "continuity test", "HV test", "commissioning"],
+      "activities": {
+        "cable_laying": ["cable laying", "power cable", "control cable", "cable pulling", "cable installation"],
+        "loop_testing": ["loop testing", "loop test", "loop check", "electrical loop"]
+      }
+    },
+    "instrumentation": {
+      "installation": ["instrument installed", "transmitter installed", "gauge installed", "sensor fitted"],
+      "loop_test": ["loop test", "loop check", "loop testing completed", "signal check"],
+      "calibration": ["calibrated", "calibration", "range check", "span check"],
+      "activities": {
+        "loop_testing": ["loop testing", "instrument loop", "control loop", "loop check"],
+        "installation": ["instrument installation", "transmitter installation", "gauge installation"]
+      }
+    }
+  },
+  "location_patterns": {
+    "pipeline": ["CH\\s*\\d+[+]\\d+", "chainage", "KP", "kilometer point", "section [A-Z]"],
+    "equipment": ["pump station", "compressor station", "filter station", "manifold"],
+    "building": ["building", "structure", "platform", "rack"],
+    "foundation": ["foundation [A-Z0-9-]+", "footing [A-Z0-9-]+", "anchor block [A-Z0-9-]+"]
+  },
+  "supervisor_patterns": ["supervisor:", "reported by:", "foreman:", "site engineer:", "in-charge:"],
+  "date_patterns": ["today", "this morning", "yesterday", "this shift", "end of shift"]
+}

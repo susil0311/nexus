@@ -1,0 +1,162 @@
+version: "3.9"
+
+services:
+  # ─── Database ───────────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:15-alpine
+    container_name: nexuspm_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: nexuspm
+      POSTGRES_PASSWORD: nexuspm_secret
+      POSTGRES_DB: nexuspm
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nexuspm"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── Cache + Message Broker ──────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: nexuspm_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── Object Storage ──────────────────────────────────────────────────────────
+  minio:
+    image: minio/minio:latest
+    container_name: nexuspm_minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin123
+    volumes:
+      - minio_data:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  # ─── Backend API ─────────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: nexuspm_backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://nexuspm:nexuspm_secret@postgres:5432/nexuspm
+      REDIS_URL: redis://redis:6379
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      JWT_SECRET: ${JWT_SECRET:-nexuspm_super_secret_jwt_key_change_in_prod}
+      JWT_EXPIRY_MINUTES: 60
+      CHROMADB_PATH: /app/chroma_data
+      AI_SERVICE_URL: http://ai-service:8001
+      MOCK_AI_MODE: ${MOCK_AI_MODE:-false}
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin123
+    volumes:
+      - chroma_data:/app/chroma_data
+      - uploaded_files:/app/uploads
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ─── Celery Worker ───────────────────────────────────────────────────────────
+  celery_worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: nexuspm_celery
+    restart: unless-stopped
+    command: celery -A app.tasks.celery_app worker --loglevel=info --concurrency=2
+    environment:
+      DATABASE_URL: postgresql://nexuspm:nexuspm_secret@postgres:5432/nexuspm
+      REDIS_URL: redis://redis:6379
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      JWT_SECRET: ${JWT_SECRET:-nexuspm_super_secret_jwt_key_change_in_prod}
+      CHROMADB_PATH: /app/chroma_data
+      AI_SERVICE_URL: http://ai-service:8001
+      MOCK_AI_MODE: ${MOCK_AI_MODE:-false}
+    volumes:
+      - chroma_data:/app/chroma_data
+      - uploaded_files:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # ─── AI Service ──────────────────────────────────────────────────────────────
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: nexuspm_ai
+    restart: unless-stopped
+    environment:
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      CHROMADB_PATH: /app/chroma_data
+      EMBEDDING_MODEL: all-MiniLM-L6-v2
+      MOCK_MODE: ${MOCK_AI_MODE:-false}
+      AI_SERVICE_PORT: 8001
+    volumes:
+      - chroma_data:/app/chroma_data
+      - ai_models:/app/models
+    ports:
+      - "8001:8001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # ─── Frontend ────────────────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000/api
+    container_name: nexuspm_frontend
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000/api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  minio_data:
+  chroma_data:
+  ai_models:
+  uploaded_files:
