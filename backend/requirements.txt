@@ -18,3 +18,4 @@ reportlab
 httpx
 python-dotenv
 greenlet
+email-validator>=2.0
